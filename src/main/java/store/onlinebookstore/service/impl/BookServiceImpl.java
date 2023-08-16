@@ -41,4 +41,15 @@ public class BookServiceImpl implements BookService {
     public void deleteById(Long id) {
         bookRepository.deleteById(id);
     }
+
+    @Override
+    public BookDto updateBookById(Long id, CreateBookRequestDto bookDto) {
+        // Check if book with given index is present in the DB
+        BookDto bookById = getBookById(id);
+
+        Book updatedBook = bookMapper.toModel(bookDto);
+        updatedBook.setId(bookById.getId());
+
+        return bookMapper.toDto(bookRepository.save(updatedBook));
+    }
 }
