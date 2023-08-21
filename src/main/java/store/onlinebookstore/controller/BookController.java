@@ -54,14 +54,16 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Update a book", description = "Update a book using data from request body")
+    @Operation(summary = "Update a book",
+            description = "Update a book using data from request body")
     public BookDto updateBookById(@PathVariable Long id,
                                   @RequestBody CreateBookRequestDto bookDto) {
         return bookService.updateBookById(id, bookDto);
     }
 
     @GetMapping("/search")
-    @Operation(summary = "Search a book", description = "Search a book by author, title and price filters")
+    @Operation(summary = "Search a book",
+            description = "Search a book by author, title and price filters")
     public List<BookDto> searchBooks(BookSearchParameters searchParameters) {
         return bookService.search(searchParameters);
     }

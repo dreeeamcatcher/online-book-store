@@ -1,7 +1,6 @@
 package store.onlinebookstore.service;
 
 import java.util.List;
-
 import org.springframework.data.domain.Pageable;
 import store.onlinebookstore.dto.BookDto;
 import store.onlinebookstore.dto.BookSearchParameters;
