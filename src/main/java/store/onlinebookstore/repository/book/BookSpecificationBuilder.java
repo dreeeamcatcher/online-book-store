@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
-import store.onlinebookstore.dto.BookSearchParameters;
+import store.onlinebookstore.dto.book.BookSearchParameters;
 import store.onlinebookstore.model.Book;
 import store.onlinebookstore.repository.SpecificationBuilder;
 import store.onlinebookstore.repository.SpecificationProviderManager;
