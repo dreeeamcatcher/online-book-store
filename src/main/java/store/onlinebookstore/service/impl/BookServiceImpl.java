@@ -1,6 +1,5 @@
 package store.onlinebookstore.service.impl;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +12,12 @@ import store.onlinebookstore.dto.book.BookSearchParameters;
 import store.onlinebookstore.dto.book.CreateBookRequestDto;
 import store.onlinebookstore.exception.EntityNotFoundException;
 import store.onlinebookstore.mapper.BookMapper;
-import store.onlinebookstore.mapper.CategoryMapper;
 import store.onlinebookstore.model.Book;
 import store.onlinebookstore.model.Category;
 import store.onlinebookstore.repository.book.BookRepository;
 import store.onlinebookstore.repository.book.BookSpecificationBuilder;
+import store.onlinebookstore.repository.category.CategoryRepository;
 import store.onlinebookstore.service.BookService;
-import store.onlinebookstore.service.CategoryService;
 
 @RequiredArgsConstructor
 @Service
@@ -27,12 +25,13 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
     private final BookSpecificationBuilder bookSpecificationBuilder;
-    private final CategoryService categoryService;
-    private final CategoryMapper categoryMapper;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public BookDto save(CreateBookRequestDto requestDto) {
-        Set<Category> categories = getCategoriesFromIds(requestDto.getCategoryIds());
+
+        Set<Category> categories = categoryRepository
+                .getCategoriesByIdIn(requestDto.getCategoryIds());
 
         Book book = bookMapper.toModel(requestDto);
         book.setCategories(categories);
@@ -64,7 +63,8 @@ public class BookServiceImpl implements BookService {
         // Check if book with given index is present in the DB
         BookDto bookById = getBookById(id);
 
-        Set<Category> categoriesFromRequest = getCategoriesFromIds(requestDto.getCategoryIds());
+        Set<Category> categoriesFromRequest = categoryRepository
+                .getCategoriesByIdIn(requestDto.getCategoryIds());
 
         Book updatedBook = bookMapper.toModel(requestDto);
         updatedBook.setId(bookById.getId());
@@ -88,14 +88,5 @@ public class BookServiceImpl implements BookService {
                 .stream()
                 .map(bookMapper::toDtoWithoutCategories)
                 .toList();
-    }
-
-    private Set<Category> getCategoriesFromIds(List<Long> ids) {
-        Set<Category> categories = new HashSet<>();
-
-        for (Long id : ids) {
-            categories.add(categoryMapper.toModel(categoryService.getById(id)));
-        }
-        return categories;
     }
 }
