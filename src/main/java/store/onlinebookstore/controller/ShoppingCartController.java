@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import store.onlinebookstore.dto.cartitem.CreateCartItemRequestDto;
 import store.onlinebookstore.dto.cartitem.ItemQuantity;
 import store.onlinebookstore.dto.shoppingcart.ShoppingCartDto;
+import store.onlinebookstore.model.User;
 import store.onlinebookstore.service.ShoppingCartService;
 
 @Tag(name = "ShoppingCart management", description = "Endpoints for managing shopping cart")
@@ -30,8 +31,8 @@ public class ShoppingCartController {
     @Operation(summary = "Show shopping cart",
             description = "Show shopping cart for logged in user")
     public ShoppingCartDto getShoppingCartForUser(Authentication authentication) {
-        String email = authentication.getName();
-        return shoppingCartService.findByEmail(email);
+        User user = (User) authentication.getPrincipal();
+        return shoppingCartService.getByUserId(user.getId());
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -40,8 +41,8 @@ public class ShoppingCartController {
             description = "Add a specific book to shopping cart")
     public ShoppingCartDto addToShoppingCart(Authentication authentication,
                                              @RequestBody CreateCartItemRequestDto requestDto) {
-        String email = authentication.getName();
-        return shoppingCartService.addItemToCart(email, requestDto);
+        User user = (User) authentication.getPrincipal();
+        return shoppingCartService.addItemToCart(user.getId(), requestDto);
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -51,8 +52,9 @@ public class ShoppingCartController {
     public ShoppingCartDto updateItemQuantity(Authentication authentication,
                                               @PathVariable Long itemId,
                                               @RequestBody ItemQuantity itemQuantity) {
-        String email = authentication.getName();
-        return shoppingCartService.updateItemQuantity(email, itemId, itemQuantity.quantity());
+        User user = (User) authentication.getPrincipal();
+        return shoppingCartService.updateItemQuantity(
+                user.getId(), itemId, itemQuantity.quantity());
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -61,7 +63,7 @@ public class ShoppingCartController {
             description = "Delete item from shopping cart")
     public ShoppingCartDto deleteItem(Authentication authentication,
                                       @PathVariable Long itemId) {
-        String email = authentication.getName();
-        return shoppingCartService.deleteItem(email, itemId);
+        User user = (User) authentication.getPrincipal();
+        return shoppingCartService.deleteItem(user.getId(), itemId);
     }
 }

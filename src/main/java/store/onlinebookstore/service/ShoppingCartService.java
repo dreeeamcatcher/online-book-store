@@ -9,11 +9,11 @@ import store.onlinebookstore.model.User;
 public interface ShoppingCartService {
     void createShoppingCart(User user);
 
-    ShoppingCartDto findByEmail(String email);
+    ShoppingCartDto addItemToCart(Long userId, CreateCartItemRequestDto requestDto);
 
-    ShoppingCartDto addItemToCart(String email, CreateCartItemRequestDto requestDto);
+    ShoppingCartDto updateItemQuantity(Long userId, Long itemId, int quantity);
 
-    ShoppingCartDto updateItemQuantity(String email, Long itemId, int quantity);
+    ShoppingCartDto deleteItem(Long userId, Long itemId);
 
-    ShoppingCartDto deleteItem(String email, Long itemId);
+    ShoppingCartDto getByUserId(Long userId);
 }
