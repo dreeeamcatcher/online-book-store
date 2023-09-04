@@ -14,6 +14,7 @@ import store.onlinebookstore.model.RoleName;
 import store.onlinebookstore.model.User;
 import store.onlinebookstore.repository.role.RoleRepository;
 import store.onlinebookstore.repository.user.UserRepository;
+import store.onlinebookstore.service.ShoppingCartService;
 import store.onlinebookstore.service.UserService;
 
 @Component
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
+    private final ShoppingCartService shoppingCartService;
 
     @Override
     public UserResponseDto register(UserRegistrationRequestDto requestDto)
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
         user.setShippingAddress(requestDto.getShippingAddress());
         user.setRoles(new HashSet<>(List.of(roleUser)));
         User savedUser = userRepository.save(user);
+        shoppingCartService.createShoppingCart(savedUser);
         return userMapper.toUserResponse(savedUser);
     }
 }
