@@ -3,6 +3,7 @@ package store.onlinebookstore.service;
 import org.springframework.stereotype.Service;
 import store.onlinebookstore.dto.cartitem.CreateCartItemRequestDto;
 import store.onlinebookstore.dto.shoppingcart.ShoppingCartDto;
+import store.onlinebookstore.model.ShoppingCart;
 import store.onlinebookstore.model.User;
 
 @Service
@@ -16,4 +17,6 @@ public interface ShoppingCartService {
     ShoppingCartDto deleteItem(Long userId, Long itemId);
 
     ShoppingCartDto getByUserId(Long userId);
+
+    ShoppingCart findShoppingCartByUserId(Long userId);
 }
