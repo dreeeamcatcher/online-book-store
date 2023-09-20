@@ -61,7 +61,7 @@ public class BookController {
     @Operation(summary = "Update a book",
             description = "Update a book using data from request body")
     public BookDto updateBookById(@PathVariable Long id,
-                                  @RequestBody CreateBookRequestDto bookDto) {
+                                  @RequestBody @Valid CreateBookRequestDto bookDto) {
         return bookService.updateBookById(id, bookDto);
     }
 
