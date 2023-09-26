@@ -10,7 +10,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,34 +50,17 @@ class CartItemServiceImplTest {
                 .setQuantity(2);
 
         User user = new User()
-                .setId(1L)
-                .setEmail("user@email.com")
-                .setPassword("password")
-                .setFirstName("First name")
-                .setLastName("Last name")
-                .setShippingAddress("address");
+                .setId(1L);
 
         ShoppingCart shoppingCart = new ShoppingCart()
                 .setId(1L)
                 .setUser(user);
 
         BookDto bookDto = new BookDto()
-                .setId(bookId)
-                .setTitle("The Lord of the Rings")
-                .setAuthor("J. R. R. Tolkien")
-                .setIsbn("9780544003415")
-                .setPrice(BigDecimal.valueOf(15.5))
-                .setDescription("Awesome book")
-                .setCoverImage("The Lord of the Rings image");
+                .setId(bookId);
 
         Book book = new Book()
-                .setId(bookDto.getId())
-                .setTitle(bookDto.getTitle())
-                .setAuthor(bookDto.getAuthor())
-                .setIsbn(bookDto.getIsbn())
-                .setPrice(bookDto.getPrice())
-                .setDescription(bookDto.getDescription())
-                .setCoverImage(bookDto.getCoverImage());
+                .setId(bookDto.getId());
 
         when(bookService.getBookById(anyLong())).thenReturn(bookDto);
         when(bookMapper.toModel(bookDto)).thenReturn(book);
