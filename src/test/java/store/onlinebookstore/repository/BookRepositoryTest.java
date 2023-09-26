@@ -62,7 +62,7 @@ class BookRepositoryTest {
     }, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     @DisplayName("Find all categories")
-    void findAll() {
+    void findAll_ReturnsAllBooks() {
         // Given
         Pageable pageable = PageRequest.of(0, 10);
 
@@ -85,7 +85,7 @@ class BookRepositoryTest {
     }, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     @DisplayName("Find category by id")
-    void findById() {
+    void findById_ValidId_ReturnsOptionalWithPresentValue() {
         // When
         Optional<Book> byId1 = bookRepository.findById(1L);
         Optional<Book> byId4 = bookRepository.findById(4L);

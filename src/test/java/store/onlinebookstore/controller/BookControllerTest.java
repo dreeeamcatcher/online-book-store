@@ -66,16 +66,6 @@ class BookControllerTest {
             ScriptUtils.executeSqlScript(connection,
                     new ClassPathResource("database/categories/associate-categories-to-books.sql"));
         }
-
-        CategoryDto fantasyDto = new CategoryDto()
-                .setId(1L)
-                .setName("Fantasy")
-                .setDescription("Fantasy");
-
-        CategoryDto detectiveDto = new CategoryDto()
-                .setId(3L)
-                .setName("Detective")
-                .setDescription("Detective");
     }
 
     @AfterAll

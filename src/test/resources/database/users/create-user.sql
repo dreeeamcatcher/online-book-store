@@ -1,0 +1,1 @@
+insert into users(id, email, password, first_name, last_name, shipping_address, is_deleted) values (1, 'user@mail.com', '$2a$10$gY8dcNxzlC5TIBhYnhvpB.n1ZgEGF3laYghhFzVYWQ3nUkDmjDuBi', 'Firstname', 'Lastname', 'Address', false);
