@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-admin-user
+      author: onlinebookstore
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: email
+                  value: admin@email.com
+              - column:
+                  name: password
+                  value: $2a$10$2S0aQucQDXEtF9VpcereM.iDXOodYz2agwc4ah03ohE2TkQJ/ADRi
+              - column:
+                  name: first_name
+                  value: admin
+              - column:
+                  name: last_name
+                  value: admin
+              - column:
+                  name: shipping_address
+                  value: admin
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+
+
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: role_id
+                  value: 1
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: role_id
+                  value: 2
