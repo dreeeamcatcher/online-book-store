@@ -1,1 +1,1 @@
-delete from users_roles where user_id = 1;
+delete from users_roles where user_id between 1 and 2;
