@@ -28,7 +28,6 @@ databaseChangeLog:
                   name: is_deleted
                   valueBoolean: false
 
-
         - insert:
             tableName: users_roles
             columns:
