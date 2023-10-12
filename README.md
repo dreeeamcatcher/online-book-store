@@ -1,7 +1,9 @@
 # :books:online-book-store
 
 ##  📑Project description:
-This project - is a web application that models the functionality of an online bookstore. It supports basic user operations like registration, login, browsing pages, populating the shopping cart, editing the shopping cart, and creating an order. And grants admin-level abilities for a corresponding user role.
+This project - is a web application that models the functionality of an online bookstore. It supports basic user operations like registration, login, browsing pages, populating the shopping cart, editing the shopping cart, and creating an order. And grants admin-level abilities for a corresponding user role.  
+</br>
+**To check all available APIs, please, follow the [link](http://ec2-16-171-58-232.eu-north-1.compute.amazonaws.com/swagger-ui/index.html)!**
 
 The app follows a three-tier architecture by separating presentation, application, and data tiers:
 
@@ -64,8 +66,3 @@ The app follows a three-tier architecture by separating presentation, applicatio
 4. Run `docker-compose up --build` to build and start docker containers
 5. Application will be available at `http://localhost:8088`.
 
-You can also try web version available **here**  
-For Swagger UI please click **here**  
-Credentials for user with `ADMIN` role:  
-email: `admin`  
-password: `admin`
