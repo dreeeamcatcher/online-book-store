@@ -1,10 +1,9 @@
 # :books:online-book-store
 
 ##  📑Project description:
+Online store, probably - one of the most common projects to build for a developer right now. With that in mind, I decided to get some practice by building a prototype of the online store. Also, it gives me a basis for a future side project, if I decide to build an online store.  
 This project - is a web application that models the functionality of an online bookstore. It supports basic user operations like registration, login, browsing pages, populating the shopping cart, editing the shopping cart, and creating an order. And grants admin-level abilities for a corresponding user role.  
 </br>
-**To check all available APIs, please, follow the [link](http://ec2-16-171-58-232.eu-north-1.compute.amazonaws.com/swagger-ui/index.html)!**
-
 The app follows a three-tier architecture by separating presentation, application, and data tiers:
 
 - `Controller`: handles user interactions, including HTTP request handling and response generation;
@@ -45,6 +44,12 @@ The app follows a three-tier architecture by separating presentation, applicatio
   * :green_circle:get an order by id
   * :green_circle:get a book in order
   * :large_blue_circle:update order status
+ 
+### :video_camera:Quick features overview:
+
+[![online-book-store overview](https://img.youtube.com/vi/unUTJ8sUtns/0.jpg)](https://www.youtube.com/watch?v=unUTJ8sUtns)
+
+**To check all available APIs, please, follow the [link](http://ec2-16-171-58-232.eu-north-1.compute.amazonaws.com/swagger-ui/index.html)!**
 
 ## :gear:Technologies:
 * JDK 17
